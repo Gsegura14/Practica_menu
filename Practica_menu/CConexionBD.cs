@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.Sql;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,12 +16,13 @@ namespace Practica_menu
         static private string cadenaConexion = @"Server=DESKTOP-BHI57B9\SQLEXPRESS;DataBase=uERP;Integrated Security=true;";
         // Conexión a la base de datos.
         public SqlConnection Connection { get; } = new SqlConnection(cadenaConexion);
-
+        
         public void Abrir()
         {
             //abrir si está cerrada
             if (Connection.State == ConnectionState.Closed)
                 Connection.Open();
+            
           
             
         }

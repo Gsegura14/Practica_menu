@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -178,6 +179,45 @@ namespace Practica_menu
             {
                 this.Close();
             }
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            // Buscamos la fila anterior.
+            int rowIndex = dataGridView.CurrentRow.Index - 1;
+            //Si es negativa,es porque estábamos ya en la primera fila.
+            if (rowIndex < 0)
+                rowIndex = 0;
+            // Nos posicionamos en la fila del DAtaGRidView
+            dataGridView.CurrentCell = dataGridView[1, rowIndex];
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            //Buscamos la fila siguiente
+            int rowIndex = dataGridView.CurrentRow.Index + 1;
+            // Si es mayor que la cantidad de filas que hay en el DAtaGRidView, entonces nos camos a l aultima fila
+            if (rowIndex >= dataGridView.RowCount)
+                rowIndex = dataGridView.RowCount - 1;
+            // Nos posicionamos en la fila del DataGRidView
+            dataGridView.CurrentCell = dataGridView[1, rowIndex];
+        }
+
+        private void btnUltimo_Click(object sender, EventArgs e)
+        {
+            // Buscamos la última fil.
+            int rowIndex = dataGridView.RowCount - 1;
+            //Di no habia filas en el datafriview, entonces la fila será la primera
+            if (rowIndex < 0)
+                rowIndex = 0;
+            // Nos posicionamos en la fila del DataGridView
+            dataGridView.CurrentCell = dataGridView[1, rowIndex];
+        }
+
+        private void btnPrimero_Click(object sender, EventArgs e)
+        {
+            //Nos posicionamos en la primera fila del DataGridView
+            dataGridView.CurrentCell = dataGridView[1, 0];
         }
     }
 }

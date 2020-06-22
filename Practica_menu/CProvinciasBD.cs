@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Sql;
 
 namespace Practica_menu
 {
@@ -44,16 +45,16 @@ namespace Practica_menu
                 if (provincia_id == 0)
                 {
                     sqlCommand.CommandText =
-                        "SELECT provincia_id AS Id,codigo AS Codigo,provincia AS Provincia," +
-                        "FROM provincias";
+                        "SELECT provincia_id AS Id,codigo AS Codigo,provincia AS Provincia" +
+                        " FROM provincias";
                 }
                 else
                 {
                     //en caso contrario una provincia en concreto
                     sqlCommand.CommandText =
-                        "SELECT provincia_id AS Id,codigo AS Codigo, provincia AS Provincia," +
-                        "FROM provincias" +
-                        "WHERE provincia_id=" + Provincia_id;
+                        "SELECT provincia_id AS Id,codigo AS Codigo, provincia AS Provincia" +
+                        " FROM provincias" +
+                        " WHERE provincia_id=" + Provincia_id;
                 }
                 //Ejecutamos la sentencia
                 SqlDataReader = sqlCommand.ExecuteReader();
@@ -99,8 +100,8 @@ namespace Practica_menu
                 sqlCommand.CommandType = CommandType.Text;
                 // Hemos utilizado Format para ocnstruir la sentencia.
                 sqlCommand.CommandText =
-                    string.Format("INSERT INTO provincias VALUES ({0},{1},'{2}')",
-                    Provincia_id, Codigo, Convert.ToString(Provincia));
+                    string.Format("INSERT INTO provincias VALUES ({0},'{1}')",
+                                   Codigo, Convert.ToString(Provincia));
                 // Ejecutamos la sentencia, indicando que no es suna consulta SELECT y
                 // aprovechamos el número de registros que nos devuelve.En este caso debe ser 1.
                 bInsertada = sqlCommand.ExecuteNonQuery() == 1;
@@ -161,6 +162,7 @@ namespace Practica_menu
             int ultimo_id = 0;
             try
             {
+                sqlCommand.CommandText = "SELECT @@IDENTITY as ultimo_id";
                 // Esta sentencia obtiene la última provincia insertada.
                 SqlDataReader = sqlCommand.ExecuteReader();
                 DataTable dataTable = new DataTable();

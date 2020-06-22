@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data.Sql;
 
 namespace Practica_menu
 {
@@ -37,6 +38,6 @@ namespace Practica_menu
             gestionProvincias.ShowDialog();
         }
 
-       
+     
     }
 }
