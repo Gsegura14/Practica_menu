@@ -82,20 +82,20 @@
             this.provinciasToolStripMenuItem,
             this.iVAToolStripMenuItem});
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
             // 
             // provinciasToolStripMenuItem
             // 
             this.provinciasToolStripMenuItem.Name = "provinciasToolStripMenuItem";
-            this.provinciasToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.provinciasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.provinciasToolStripMenuItem.Text = "Provincias";
             this.provinciasToolStripMenuItem.Click += new System.EventHandler(this.provinciasToolStripMenuItem_Click);
             // 
             // iVAToolStripMenuItem
             // 
             this.iVAToolStripMenuItem.Name = "iVAToolStripMenuItem";
-            this.iVAToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.iVAToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.iVAToolStripMenuItem.Text = "IVA";
             this.iVAToolStripMenuItem.Click += new System.EventHandler(this.iVAToolStripMenuItem_Click);
             // 
@@ -103,14 +103,14 @@
             // 
             this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
             this.imprimirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.imprimirToolStripMenuItem.Text = "Imprimir";
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -140,13 +140,14 @@
             // cLientesToolStripMenuItem1
             // 
             this.cLientesToolStripMenuItem1.Name = "cLientesToolStripMenuItem1";
-            this.cLientesToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
+            this.cLientesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.cLientesToolStripMenuItem1.Text = "CLientes";
+            this.cLientesToolStripMenuItem1.Click += new System.EventHandler(this.cLientesToolStripMenuItem1_Click);
             // 
             // albaranesToolStripMenuItem
             // 
             this.albaranesToolStripMenuItem.Name = "albaranesToolStripMenuItem";
-            this.albaranesToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.albaranesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.albaranesToolStripMenuItem.Text = "Albaranes";
             // 
             // ctPrincipal

@@ -67,6 +67,7 @@
             this.btnRecargar.TabIndex = 1;
             this.btnRecargar.Text = "q";
             this.btnRecargar.UseVisualStyleBackColor = true;
+            this.btnRecargar.Click += new System.EventHandler(this.btnRecargar_Click);
             // 
             // btnNuevo
             // 
@@ -77,6 +78,7 @@
             this.btnNuevo.TabIndex = 1;
             this.btnNuevo.Text = "+";
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // btnEditar
             // 
@@ -88,6 +90,7 @@
             this.btnEditar.TabIndex = 1;
             this.btnEditar.Text = "!";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnBorrar
             // 
@@ -99,6 +102,7 @@
             this.btnBorrar.TabIndex = 1;
             this.btnBorrar.Text = "û";
             this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
             // btnPrimero
             // 
@@ -111,6 +115,7 @@
             this.btnPrimero.TabIndex = 1;
             this.btnPrimero.Text = "9";
             this.btnPrimero.UseVisualStyleBackColor = true;
+            this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
             // 
             // btnAnterior
             // 
@@ -124,6 +129,7 @@
             this.btnAnterior.Text = "3";
             this.btnAnterior.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
             // 
             // btnSiguiente
             // 
@@ -137,6 +143,7 @@
             this.btnSiguiente.Text = "4";
             this.btnSiguiente.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
             // btnUltimo
             // 
@@ -150,6 +157,7 @@
             this.btnUltimo.Text = ":";
             this.btnUltimo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnUltimo.UseVisualStyleBackColor = true;
+            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
             // 
             // btnSalir
             // 
@@ -163,6 +171,7 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // FClientes
             // 
@@ -185,6 +194,7 @@
             this.Name = "FClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
+            this.Load += new System.EventHandler(this.FClientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

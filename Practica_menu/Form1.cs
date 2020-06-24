@@ -38,6 +38,10 @@ namespace Practica_menu
             gestionProvincias.ShowDialog();
         }
 
-     
+        private void cLientesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FClientes gestionClientes = new FClientes();
+            gestionClientes.ShowDialog();
+        }
     }
 }
