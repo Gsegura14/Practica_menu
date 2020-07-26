@@ -44,13 +44,13 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.txtCif = new System.Windows.Forms.TextBox();
-            this.txtDireccion = new System.Windows.Forms.TextBox();
             this.txtCp = new System.Windows.Forms.TextBox();
             this.txtPoblacion = new System.Windows.Forms.TextBox();
-            this.txtProvincia = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.cbProvincias = new System.Windows.Forms.ComboBox();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnAceptar
@@ -196,13 +196,6 @@
             this.txtCif.Size = new System.Drawing.Size(133, 20);
             this.txtCif.TabIndex = 2;
             // 
-            // txtDireccion
-            // 
-            this.txtDireccion.Location = new System.Drawing.Point(121, 272);
-            this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(375, 20);
-            this.txtDireccion.TabIndex = 3;
-            // 
             // txtCp
             // 
             this.txtCp.Location = new System.Drawing.Point(79, 307);
@@ -216,13 +209,6 @@
             this.txtPoblacion.Name = "txtPoblacion";
             this.txtPoblacion.Size = new System.Drawing.Size(142, 20);
             this.txtPoblacion.TabIndex = 5;
-            // 
-            // txtProvincia
-            // 
-            this.txtProvincia.Location = new System.Drawing.Point(438, 306);
-            this.txtProvincia.Name = "txtProvincia";
-            this.txtProvincia.Size = new System.Drawing.Size(166, 20);
-            this.txtProvincia.TabIndex = 6;
             // 
             // txtTelefono
             // 
@@ -248,16 +234,32 @@
             this.label11.TabIndex = 10;
             this.label11.Text = "Modificación de clientes";
             // 
+            // cbProvincias
+            // 
+            this.cbProvincias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbProvincias.FormattingEnabled = true;
+            this.cbProvincias.Location = new System.Drawing.Point(438, 307);
+            this.cbProvincias.Name = "cbProvincias";
+            this.cbProvincias.Size = new System.Drawing.Size(166, 21);
+            this.cbProvincias.TabIndex = 6;
+            // 
+            // txtDireccion
+            // 
+            this.txtDireccion.Location = new System.Drawing.Point(121, 271);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(375, 20);
+            this.txtDireccion.TabIndex = 11;
+            // 
             // FClientesModificar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 533);
+            this.Controls.Add(this.txtDireccion);
+            this.Controls.Add(this.cbProvincias);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.txtProvincia);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtCliente);
-            this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.txtCp);
             this.Controls.Add(this.txtPoblacion);
             this.Controls.Add(this.txtTelefono);
@@ -304,12 +306,12 @@
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.TextBox txtCliente;
         private System.Windows.Forms.TextBox txtCif;
-        private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.TextBox txtCp;
         private System.Windows.Forms.TextBox txtPoblacion;
-        private System.Windows.Forms.TextBox txtProvincia;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cbProvincias;
+        private System.Windows.Forms.TextBox txtDireccion;
     }
 }

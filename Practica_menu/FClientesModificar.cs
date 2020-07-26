@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.Sql;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace Practica_menu
 {
-   
+
     public partial class FClientesModificar : Form
     {
         public int Cliente_id { get; set; }
@@ -25,35 +17,40 @@ namespace Practica_menu
 
         private void FClientesModificar_Load(object sender, EventArgs e)
         {
-            CClientesBD clientesBD = new CClientesBD();
-            // Obtenemos todos los registros de la tabla
-           // cbClientes.DataSource = clientesBD.Seleccionar();
-            //Mostramos el valor del campo cliente
-         //   cbClientes.DisplayMember = "cliente";
-            //Indicamos que el valor selecciondo es la clave primaria
-       //     cbClientes.ValueMember = "cliente_id";
+            //Instanciamos las clases CCprovinciasBD
+            CProvinciasBD cProvinciasBD = new CProvinciasBD();
+            //obtenemos todos los valore de la tabla
+            cbProvincias.DataSource = cProvinciasBD.Seleccionar();
+            //Mostramos el valor del campo de la categoria
+            cbProvincias.DisplayMember = "provincia";
+            //Indicamos que el valor seleccionado es clave primaria
+            cbProvincias.ValueMember = "provincia_id";
 
-            //Si me indican un cliente en concreto , es qu equeremos modificarlo
+            
+
+          
             if (Cliente_id != 0)
             {
                 //Instanciamos la clase CClientesBD;
-              //  CClientesBD clientesBD = new CClientesBD();
+                 CClientesBD clientesBD = new CClientesBD();
                 //Buscmaos el cliente
                 clientesBD.Seleccionar(Cliente_id);
                 //Mostramos la clave primaria
                 txtId.Text = Convert.ToString(clientesBD.Cliente_id);
                 //codigo
-                txtCodigo.Text = Convert.ToString(clientesBD.Codigo_id);
+                txtCodigo.Text = Convert.ToString(clientesBD.Codigo);
                 //El nombre del cliente
-                txtCliente.Text = Convert.ToString(clientesBD.Cliente);
+                txtCliente.Text = clientesBD.Cliente;
                 //CIF
-                txtCif.Text = Convert.ToString(clientesBD.Cif);
-                txtDireccion.Text = Convert.ToString(clientesBD.Direccion);
+                txtCif.Text =clientesBD.Cif;
+                txtDireccion.Text = clientesBD.Direccion;
                 txtCp.Text = Convert.ToString(clientesBD.Cp);
-                txtPoblacion.Text = Convert.ToString(clientesBD.Poblacion);
-                txtProvincia.Text = Convert.ToString(clientesBD.Provincia_id);
-                txtTelefono.Text = Convert.ToString(clientesBD.Telefono);
-                txtEmail.Text = Convert.ToString(clientesBD.Email);
+                txtPoblacion.Text = clientesBD.Poblacion;
+                // Buscamos en el comboBox el indice de la provincia
+                //cbProvincias.SelectedIndex = cbProvincias.FindStringExact(clientesBD.Provincia);
+                cbProvincias.SelectedValue = clientesBD.Provincia_id;
+                txtTelefono.Text = clientesBD.Telefono;
+                txtEmail.Text =clientesBD.Email;
 
                 //Cambio a form modificacion
                 Text = "Clientes : modificación";
@@ -71,13 +68,13 @@ namespace Practica_menu
             //Instanciamos la clase CCLientesBD
             CClientesBD clientesBD = new CClientesBD();
             // Le pasamos ac ada una de las propiedades los valores correspondientes.
-            clientesBD.Codigo_id = (int)clientesBD.Codigo_id;
+            clientesBD.Codigo = Convert.ToInt32(txtCodigo.Text);
             clientesBD.Cliente = txtCliente.Text;
             clientesBD.Cif = txtCif.Text;
             clientesBD.Direccion = txtDireccion.Text;
-            clientesBD.Cp = txtCp.Text;
+            clientesBD.Cp = (txtCp.Text);
             clientesBD.Poblacion = txtPoblacion.Text;
-            clientesBD.Provincia_id = Convert.ToInt32(txtProvincia.Text);
+            clientesBD.Provincia_id =(int)cbProvincias.SelectedValue;
             clientesBD.Telefono = txtTelefono.Text;
             clientesBD.Email = txtEmail.Text;
             //Si estamos insertando
@@ -120,6 +117,8 @@ namespace Practica_menu
             }
             return true;
         }
+
+      
     }
 
 }

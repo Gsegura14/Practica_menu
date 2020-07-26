@@ -1,6 +1,6 @@
 ﻿namespace Practica_menu
 {
-    partial class Form1
+    partial class FPrincipal
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FPrincipal));
             this.mnPrincipal = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,14 +88,14 @@
             // provinciasToolStripMenuItem
             // 
             this.provinciasToolStripMenuItem.Name = "provinciasToolStripMenuItem";
-            this.provinciasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.provinciasToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.provinciasToolStripMenuItem.Text = "Provincias";
             this.provinciasToolStripMenuItem.Click += new System.EventHandler(this.provinciasToolStripMenuItem_Click);
             // 
             // iVAToolStripMenuItem
             // 
             this.iVAToolStripMenuItem.Name = "iVAToolStripMenuItem";
-            this.iVAToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.iVAToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.iVAToolStripMenuItem.Text = "IVA";
             this.iVAToolStripMenuItem.Click += new System.EventHandler(this.iVAToolStripMenuItem_Click);
             // 
@@ -125,8 +125,9 @@
             // productosToolStripMenuItem1
             // 
             this.productosToolStripMenuItem1.Name = "productosToolStripMenuItem1";
-            this.productosToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
+            this.productosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.productosToolStripMenuItem1.Text = "Productos";
+            this.productosToolStripMenuItem1.Click += new System.EventHandler(this.productosToolStripMenuItem1_Click);
             // 
             // clientesToolStripMenuItem
             // 
@@ -149,6 +150,7 @@
             this.albaranesToolStripMenuItem.Name = "albaranesToolStripMenuItem";
             this.albaranesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.albaranesToolStripMenuItem.Text = "Albaranes";
+            this.albaranesToolStripMenuItem.Click += new System.EventHandler(this.albaranesToolStripMenuItem_Click);
             // 
             // ctPrincipal
             // 
@@ -211,7 +213,7 @@
             this.toolStripButton3.Text = "Salir";
             this.toolStripButton3.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
-            // Form1
+            // FPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -220,7 +222,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.mnPrincipal);
             this.MainMenuStrip = this.mnPrincipal;
-            this.Name = "Form1";
+            this.Name = "FPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "uERP";
             this.mnPrincipal.ResumeLayout(false);

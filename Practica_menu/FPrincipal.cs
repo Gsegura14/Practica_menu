@@ -14,9 +14,9 @@ namespace Practica_menu
 {
    
 
-    public partial class Form1 : Form
+    public partial class FPrincipal : Form
     {
-        public Form1()
+        public FPrincipal()
         {
             InitializeComponent();
         }        
@@ -28,7 +28,7 @@ namespace Practica_menu
 
         private void iVAToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Fivas FrmIvas = new Fivas();
+            FIvasBD FrmIvas = new FIvasBD();
             FrmIvas.Show();
         }
 
@@ -42,6 +42,18 @@ namespace Practica_menu
         {
             FClientes gestionClientes = new FClientes();
             gestionClientes.ShowDialog();
+        }
+
+        private void productosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FProductos gestionProductos = new FProductos();
+            gestionProductos.ShowDialog();
+        }
+
+        private void albaranesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FAlbaranBD nuevoAlbaran = new FAlbaranBD();
+            nuevoAlbaran.ShowDialog();
         }
     }
 }

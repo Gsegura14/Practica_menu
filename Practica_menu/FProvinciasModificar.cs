@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.Sql;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace Practica_menu
 {
@@ -24,14 +16,14 @@ namespace Practica_menu
 
         private void FProvinciasModificar_Load(object sender, EventArgs e)
         {
-            // instranciamos las classe de conexion cprvinciasbd
-            CProvinciasBD provinciasBD = new CProvinciasBD();
-            // Obtenemos todos los registros de la tabla
-
-            // Mostramos el codigo de la provincia
-            txtCodigo.Text = Convert.ToString(provinciasBD.Codigo);
-            // Nombre de la provincia
-            txtNProvincia.Text = provinciasBD.Provincia;
+            if (Provincia_id != 0)
+            {
+                CProvinciasBD provinciasBD = new CProvinciasBD();
+                provinciasBD.Seleccionar(Provincia_id);
+                txtId.Text = Convert.ToString(provinciasBD.Provincia_id);//La clave primaria
+                txtNProvincia.Text = provinciasBD.Provincia;//EL nombre de la provincia.
+                Text = "Provincias :: Modificación"; // Cambiar el nombre del formulario
+            }           
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -44,7 +36,7 @@ namespace Practica_menu
             // Instanciamos la clase CprovinciasBD();
             CProvinciasBD provinciasBd = new CProvinciasBD();
             // Le pasamos a cada una de las propiedades los valores correspondientes
-            provinciasBd.Codigo = Convert.ToInt32(txtCodigo.Text);
+           // provinciasBd.Codigo = Convert.ToInt32(txtCodigo.Text);
             provinciasBd.Provincia = txtNProvincia.Text;
             // Si estamos insertando...
             if ( Provincia_id == 0)

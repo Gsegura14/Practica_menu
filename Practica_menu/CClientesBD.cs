@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Practica_menu
 {
     public class CClientesBD : CConexionBD
@@ -20,13 +21,14 @@ namespace Practica_menu
 
         // Propiedades para almacenar los datos de un registro de la tabla.
         public int Cliente_id { get; set; }
-        public int Codigo_id { get; set; }
+        public int Codigo { get; set; }
         public String Cliente { get; set; }
         public String Cif { get; set; }
         public String Direccion { get; set; }
         public String Cp { get; set; }
         public String Poblacion { get; set; }
         public int Provincia_id { get; set; }
+        public String Provincia { get; set; }
         public String Telefono { get; set; }
         public String Email { get; set; }
 
@@ -49,9 +51,9 @@ namespace Practica_menu
                 if (cliente_id == 0)
                 {
                     sqlCommand.CommandText =
-                        "SELECT cliente_id AS Id,clientes.codigo AS Codigo,cliente AS cliente,cif AS CIF,direccion AS Dirección," + 
-                        " cp AS Código_Postal,poblacion AS Población,provincias.provincia_id AS Código_Provincia,"+
-                        " telefono AS Teléfono,email AS Email"+
+                        "SELECT cliente_id AS Id,clientes.codigo AS Codigo,cliente AS Cliente,cif AS CIF,direccion AS Direccion," + 
+                        " cp,poblacion AS Poblacion,"+
+                        " clientes.provincia_id,provincias.provincia AS Provincia,telefono AS Telefono,email AS Email"+
                         " FROM clientes INNER JOIN provincias ON clientes.provincia_id = provincias.provincia_id"+
                         " ORDER BY codigo";
 
@@ -62,11 +64,10 @@ namespace Practica_menu
                 {
                     // En caso contrario un cliente en concreto.
                     sqlCommand.CommandText =
-                        "SELECT cliente_id AS Id,clientes.codigo AS Codigo,cliente AS cliente,cif AS CIF,direccion AS Dirección," +
-                        " cp AS Código_Postal,poblacion AS Población,provincias.provincia_id AS Código_Provincia,telefono AS Teléfono" +
-                        " email AS Email" +
-                        " FROM clientes" +
-                        " INNER JOIN provincias ON clientes.provincia_id=provincias.provincia_id" +
+                        "SELECT cliente_id AS Id,clientes.codigo AS Codigo,cliente AS Cliente,cif AS CIF,direccion AS Direccion," +
+                        " cp,poblacion AS Poblacion," +
+                        " clientes.provincia_id,provincias.provincia AS Provincia,telefono AS Telefono,email AS Email" +
+                        " FROM clientes INNER JOIN provincias ON clientes.provincia_id = provincias.provincia_id" +
                         " WHERE cliente_id=" + cliente_id;
                 }
                 //Ejecutamos la sentencia
@@ -76,26 +77,28 @@ namespace Practica_menu
                 dataTable.Load(SqlDataReader);
 
                 // Si me indicaton que le seleccionase un único registro, y este existe.
-                if ((Cliente_id != 0) && (dataTable.Rows.Count != 0))
+                if ((cliente_id != 0) && (dataTable.Rows.Count != 0))
                 {
                     // Obtenemos las filas de la table en memoria.
                     DataRow[] rows = dataTable.Select();
 
                     // ASignamos a cada propiedad el valor del registro leido
                     Cliente_id = cliente_id;
-                    Codigo_id = Convert.ToInt32((rows[0])["codigo_id"].ToString());
+                    Codigo = Convert.ToInt32(rows[0]["codigo"].ToString());
                     Cliente = rows[0]["cliente"].ToString();
                     Cif = rows[0]["cif"].ToString();
                     Direccion = rows[0]["direccion"].ToString();
                     Cp = rows[0]["cp"].ToString();
                     Poblacion = rows[0]["poblacion"].ToString();
-                    Provincia_id = Convert.ToInt32((rows[0])["provincia_id"].ToString());
+                    Provincia_id = Convert.ToInt32(rows[0]["provincia_id"].ToString());
+                    Provincia = rows[0]["provincia"].ToString();
                     Telefono = rows[0]["telefono"].ToString();
                     Email = rows[0]["email"].ToString();
                 }
             }
             finally
             {
+                sqlCommand.Parameters.Clear();
                 //Cerramos los datos leídos
                 SqlDataReader.Close();
                 //Cerramos la conexion
@@ -119,8 +122,8 @@ namespace Practica_menu
                 //El cliente se ha pueste entre comillas('{2}') `porque es una cadena
 
                 sqlCommand.CommandText =
-                        string.Format("INSERT INTO clientes VALUES ({0},'{1}','{2}','{3}','{4}','{5}',{6},'{7}','{8}'",
-                        Codigo_id,Convert.ToString(Cliente));
+                        string.Format("INSERT INTO clientes VALUES ({0},'{1}','{2}','{3}','{4}','{5}',{6},'{7}','{8}')",
+                        Convert.ToString(Codigo),Cliente,Cif,Direccion,Cp,Poblacion,Convert.ToString(Provincia_id),Telefono,Email);
                         //Ejecutamos la sentencia,indicando que no es una consulta SELECT,
                         //Aprovechamos el numero  de registros que nos decuelce en este caso debe ser 1
 
@@ -148,9 +151,9 @@ namespace Practica_menu
                 sqlCommand.Connection = conexionBD.Connection;
                 sqlCommand.CommandType = CommandType.Text;
                 sqlCommand.CommandText =
-                    string.Format("UPDATE clientes SET Cliente_id={0}, Codigo_id={1},Cliente='{2}',Cif='{3},'Direccion='{4}',cp='{5}',Poblacion='{6}',Provincia_id={7},Telefono='{8}',email='{9}'" +
-                    " WHERE codigo_id={0}",
-                    Cliente_id,Codigo_id,Convert.ToString(Cliente),Convert.ToString(Cif),Convert.ToString(Direccion),Convert.ToString(Cp),Convert.ToString(Poblacion), Provincia_id,Convert.ToString(Telefono),Convert.ToString(Email));
+                    string.Format("UPDATE clientes SET Codigo={0},Cliente='{1}',Cif='{2}',Direccion='{3}',cp='{4}',Poblacion='{5}',Provincia_id={6},Telefono='{7}',email='{8}'" +
+                    " WHERE cliente_id={9}",
+                    Convert.ToString(Codigo),Cliente,Cif,Direccion,Cp,Poblacion, Convert.ToString(Provincia_id),Telefono,Email,Cliente_id);
                     bEditada = sqlCommand.ExecuteNonQuery() == 1;
             }
             finally

@@ -31,10 +31,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.lblId = new System.Windows.Forms.Label();
-            this.lblCodigo = new System.Windows.Forms.Label();
             this.lblNProvincia = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtNProvincia = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -42,7 +40,7 @@
             // 
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(240, 145);
+            this.btnCancelar.Location = new System.Drawing.Point(196, 103);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 0;
@@ -53,7 +51,7 @@
             // btnAceptar
             // 
             this.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAceptar.Location = new System.Drawing.Point(12, 145);
+            this.btnAceptar.Location = new System.Drawing.Point(12, 103);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 0;
@@ -71,19 +69,10 @@
             this.lblId.TabIndex = 1;
             this.lblId.Text = "Id";
             // 
-            // lblCodigo
-            // 
-            this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(36, 63);
-            this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(40, 13);
-            this.lblCodigo.TabIndex = 1;
-            this.lblCodigo.Text = "Código";
-            // 
             // lblNProvincia
             // 
             this.lblNProvincia.AutoSize = true;
-            this.lblNProvincia.Location = new System.Drawing.Point(36, 89);
+            this.lblNProvincia.Location = new System.Drawing.Point(36, 70);
             this.lblNProvincia.Name = "lblNProvincia";
             this.lblNProvincia.Size = new System.Drawing.Size(51, 13);
             this.lblNProvincia.TabIndex = 1;
@@ -98,16 +87,9 @@
             this.txtId.TabIndex = 2;
             this.txtId.TabStop = false;
             // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Location = new System.Drawing.Point(131, 60);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(100, 20);
-            this.txtCodigo.TabIndex = 0;
-            // 
             // txtNProvincia
             // 
-            this.txtNProvincia.Location = new System.Drawing.Point(131, 86);
+            this.txtNProvincia.Location = new System.Drawing.Point(131, 67);
             this.txtNProvincia.Name = "txtNProvincia";
             this.txtNProvincia.Size = new System.Drawing.Size(100, 20);
             this.txtNProvincia.TabIndex = 1;
@@ -116,12 +98,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 188);
+            this.ClientSize = new System.Drawing.Size(314, 158);
             this.Controls.Add(this.txtNProvincia);
-            this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.lblNProvincia);
-            this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnCancelar);
@@ -140,10 +120,8 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.Label lblNProvincia;
         private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.TextBox txtNProvincia;
     }
 }

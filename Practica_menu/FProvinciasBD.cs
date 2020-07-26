@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.Sql;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace Practica_menu
 {
@@ -58,7 +57,7 @@ namespace Practica_menu
                 fProvinciasModificar.ShowDialog();
 
                 //Si se ha pulsado el boton aceptar
-                if (fProvinciasModificar.DialogResult == DialogResult.OK) ;
+                if (fProvinciasModificar.DialogResult == DialogResult.OK) 
                 {
                     // Recargamos la tabla.
                     Recargar();
@@ -102,14 +101,14 @@ namespace Practica_menu
             if ((dataGridView.RowCount > 0)&&(MessageBox.Show("¿Realmente quiere borrar la provincia seleccionada?","Confirmación",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes))
             {
                 // Creamos una instancia de la clase CProvinciasBD
-                CProvinciasBD provinciasBD = new CProvinciasBD();
+                CProvinciasBD cProvinciasBD = new CProvinciasBD();
 
                 // Obtenemos la clave principal del producto a borrar
 
-                provinciasBD.Provincia_id = Convert.ToInt32(dataGridView.CurrentRow.Cells[0].Value);
+                cProvinciasBD.Provincia_id = Convert.ToInt32(dataGridView.CurrentRow.Cells[0].Value);
 
                 //Si la provincia se borra correctamente
-                if (provinciasBD.Borrar())
+                if (cProvinciasBD.Borrar())
                 {
                     // Obtenemos la fila actual.
                     int rowIndex = dataGridView.CurrentCell.RowIndex;
@@ -145,12 +144,11 @@ namespace Practica_menu
                    // si nos indican una dila negativa , nos posicionamos en la primera
 
             if (rowIndex < 0)
-                {
-                    rowIndex = 0;
-                    // Nos posicionamos en la fila indicada.
-                    dataGridView.CurrentCell = dataGridView[1, rowIndex];
+                rowIndex = 0;
+            // Nos posicionamos en la fila indicada.
+            dataGridView.CurrentCell = dataGridView[1, rowIndex];
 
-                }
+                
             }
 
         }

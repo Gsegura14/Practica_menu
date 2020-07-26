@@ -80,6 +80,17 @@ namespace Practica_menu
                 }
             }
         }
+        private void btnRecargar_Click(object sender, EventArgs e)
+        {
+            //Miramos en que fila nos encontramos
+            //Si no tenemos filas,nos posicionamos en la primera(0)
+            //En caso contrario,en la fila actual del DataGRidView
+            //Observar la utilidad, en este caso, del operador ternario.Más limpio que utilizar un if.
+
+            int rowIndex = (dataGridView1.RowCount == 0) ? 0 : dataGridView1.CurrentRow.Index;
+
+            Recargar(rowIndex);
+        }
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
@@ -112,17 +123,7 @@ namespace Practica_menu
                 
         }
 
-        private void btnRecargar_Click(object sender, EventArgs e)
-        {
-            //Miramos en que fila nos encontramos
-            //Si no tenemos filas,nos posicionamos en la primera(0)
-            //En caso contrario,en la fila actual del DataGRidView
-            //Observar la utilidad, en este caso, del operador ternario.Más limpio que utilizar un if.
-
-            int rowIndex = (dataGridView1.RowCount == 0) ? 0 : dataGridView1.CurrentRow.Index;
-
-            Recargar(rowIndex); 
-        }
+       
         private void Recargar (int rowIndex = 0)
         {
             //Instanciamos la clase CClientesBD
@@ -140,7 +141,9 @@ namespace Practica_menu
                 //Si nos indican una fila negativa,nos posiocnamos en la primera.
                 if (rowIndex < 0)
                     rowIndex = 0;
-
+                // Ocultamos las columnas que nos interese como la clave primaria y la id de la provincia
+                dataGridView1.Columns["provincia_id"].Visible = false;
+                dataGridView1.Columns["id"].Visible = false;
                 //Nos posiconamos en la filaindicada.
                 dataGridView1.CurrentCell = dataGridView1[1, rowIndex];
             }
@@ -152,6 +155,7 @@ namespace Practica_menu
             Recargar();
             // No permitimos que nos inserten dilas a través del DataGRidview
             dataGridView1.AllowUserToAddRows = false;
+            
             //Las tablas de la cabecera las ponemos centradas.
             dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             // Si hay algun valor null, lo mostraremos con tres guiones...
@@ -162,7 +166,7 @@ namespace Practica_menu
         {
             // Si el usuario realment quiere salir,ceramos la app
 
-            if (MessageBox.Show("¿ealmente quiere salir de la App?","Confirmación",MessageBoxButtons.YesNo,MessageBoxIcon.Question)== DialogResult.Yes)
+            if (MessageBox.Show("¿Salir de Clientes?","Confirmación",MessageBoxButtons.YesNo,MessageBoxIcon.Question)== DialogResult.Yes)
             {
                 Close();
             }
