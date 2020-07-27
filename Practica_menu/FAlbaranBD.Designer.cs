@@ -57,6 +57,14 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.dataGridViewlineas = new System.Windows.Forms.DataGridView();
+            this.albaran_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.producto_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iva = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.re = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnTerminar = new System.Windows.Forms.Button();
             this.pnDatos.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -197,6 +205,7 @@
             this.txtFecha.Name = "txtFecha";
             this.txtFecha.Size = new System.Drawing.Size(100, 20);
             this.txtFecha.TabIndex = 2;
+          
             // 
             // txtId
             // 
@@ -205,7 +214,7 @@
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 20);
             this.txtId.TabIndex = 1;
-            this.txtId.Text = "555";
+            this.txtId.Text = "980";
             // 
             // lblIdAlb
             // 
@@ -243,6 +252,7 @@
             this.btnAgregar.TabIndex = 11;
             this.btnAgregar.Text = "Añadir";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label4
             // 
@@ -331,17 +341,74 @@
             // 
             // dataGridViewlineas
             // 
+            this.dataGridViewlineas.AllowUserToAddRows = false;
+            this.dataGridViewlineas.AllowUserToResizeColumns = false;
+            this.dataGridViewlineas.AllowUserToResizeRows = false;
             this.dataGridViewlineas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewlineas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.albaran_id,
+            this.cantidad,
+            this.producto_id,
+            this.precio,
+            this.iva,
+            this.re,
+            this.importe});
             this.dataGridViewlineas.Location = new System.Drawing.Point(3, 15);
             this.dataGridViewlineas.Name = "dataGridViewlineas";
-            this.dataGridViewlineas.Size = new System.Drawing.Size(823, 250);
+            this.dataGridViewlineas.Size = new System.Drawing.Size(743, 250);
             this.dataGridViewlineas.TabIndex = 0;
+            // 
+            // albaran_id
+            // 
+            this.albaran_id.HeaderText = "albaran Id";
+            this.albaran_id.Name = "albaran_id";
+            // 
+            // cantidad
+            // 
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.Name = "cantidad";
+            // 
+            // producto_id
+            // 
+            this.producto_id.HeaderText = "Producto_id";
+            this.producto_id.Name = "producto_id";
+            // 
+            // precio
+            // 
+            this.precio.HeaderText = "Precio";
+            this.precio.Name = "precio";
+            // 
+            // iva
+            // 
+            this.iva.HeaderText = "Iva";
+            this.iva.Name = "iva";
+            // 
+            // re
+            // 
+            this.re.HeaderText = "Re";
+            this.re.Name = "re";
+            // 
+            // importe
+            // 
+            this.importe.HeaderText = "Importe";
+            this.importe.Name = "importe";
+            // 
+            // btnTerminar
+            // 
+            this.btnTerminar.Location = new System.Drawing.Point(831, 514);
+            this.btnTerminar.Name = "btnTerminar";
+            this.btnTerminar.Size = new System.Drawing.Size(146, 47);
+            this.btnTerminar.TabIndex = 12;
+            this.btnTerminar.Text = "Imprimir";
+            this.btnTerminar.UseVisualStyleBackColor = true;
+            this.btnTerminar.Click += new System.EventHandler(this.btnTerminar_Click);
             // 
             // FAlbaranBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(989, 658);
+            this.Controls.Add(this.btnTerminar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnDatos);
             this.Name = "FAlbaranBD";
@@ -389,5 +456,13 @@
         public System.Windows.Forms.TextBox txtPrecio;
         public System.Windows.Forms.TextBox txtProducto;
         private System.Windows.Forms.Button btnBuscarCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn albaran_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn producto_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iva;
+        private System.Windows.Forms.DataGridViewTextBoxColumn re;
+        private System.Windows.Forms.DataGridViewTextBoxColumn importe;
+        private System.Windows.Forms.Button btnTerminar;
     }
 }

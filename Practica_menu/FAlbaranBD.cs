@@ -29,8 +29,9 @@ namespace Practica_menu
 
         private void FAlbaranBD_Load(object sender, EventArgs e)
         {
-            int numero = Convert.ToInt32(txtId.Text);
-            numero++;
+            int numero = 0;
+            CargarNumeroAlbaran(ref numero);
+            //numero++;
             txtId.Text = Convert.ToString(numero);
             DateTime fecha = DateTime.Today;
             txtFecha.Text = fecha.ToString("d");
@@ -56,15 +57,22 @@ namespace Practica_menu
 
         private void txtCantidad_Leave(object sender, EventArgs e)
         {
-            double precio = 0;
-            double cantidad = 0;
-            double total = 0;
-            precio = Convert.ToDouble(txtPrecio.Text);
-            cantidad = Convert.ToDouble(txtCantidad.Text);
-            total = cantidad * precio;
-            txtTotal.Text = total.ToString();
+            try {
+                double precio = 0;
+                double cantidad = 0;
+                double total = 0;
+                precio = Convert.ToDouble(txtPrecio.Text);
+                cantidad = Convert.ToDouble(txtCantidad.Text);
+                total = cantidad * precio;
+                txtTotal.Text = total.ToString();
 
+            }
+            catch
+            {
+                MessageBox.Show("La cantidad no puede ser 0", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
+
 
 
 
@@ -84,31 +92,35 @@ namespace Practica_menu
 
         private void btnAceptarCliente_Click(object sender, EventArgs e)
         {
-            ConexionAlb.Open();
+            try
+            {
+                ConexionAlb.Open();
 
-            btnBuscaProducto.Enabled = true; 
-            txtCodigo.Enabled = true;          
+                btnBuscaProducto.Enabled = true;
+                txtCodigo.Enabled = true;
 
-            string consulta = "INSERT INTO albaranes (numero,fecha,cliente_id)" +
-                " VALUES (@numero,@fecha,@clienteid)";
-            int codigo = Convert.ToInt32(txtIdCliente.Text);
-            
-            CargarIdCliente(ref codigo);
+                string consulta = "INSERT INTO albaranes (numero,fecha,cliente_id)" +
+                    " VALUES (@numero,@fecha,@clienteid)";
+                int codigo = Convert.ToInt32(txtIdCliente.Text);
 
-            SqlCommand comando = new SqlCommand(consulta, ConexionAlb);
-            comando.Parameters.AddWithValue("@numero", Convert.ToInt32(txtId.Text));
-            comando.Parameters.AddWithValue("@fecha", Convert.ToDateTime(txtFecha.Text));
+                CargarIdCliente(ref codigo);
 
-            comando.Parameters.AddWithValue("@clienteid", codigo);
-            comando.ExecuteNonQuery();
-            ConexionAlb.Close();
+                SqlCommand comando = new SqlCommand(consulta, ConexionAlb);
+                comando.Parameters.AddWithValue("@numero", Convert.ToInt32(txtId.Text));
+                comando.Parameters.AddWithValue("@fecha", Convert.ToDateTime(txtFecha.Text));
 
-
-
-
-
-
-
+                comando.Parameters.AddWithValue("@clienteid", codigo);
+                comando.ExecuteNonQuery();
+                ConexionAlb.Close();
+            }
+            catch
+            {
+                MessageBox.Show("El cliente no puede ser vacio. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionAlb.Close();
+            }
         }
 
         static void CargarIdCliente(ref int IdParam)
@@ -131,8 +143,126 @@ namespace Practica_menu
            
 
         }
+        static void CargarNumeroAlbaran(ref int NumParam)
+        {
+            CAlbaranesBD cAlbaranesBD = new CAlbaranesBD();
+            SqlCommand sqlCommand = new SqlCommand();
+            SqlDataReader sqlDataReader;
+            DataTable dataTable = new DataTable();
+            cAlbaranesBD.Abrir();
+            sqlCommand.Connection = cAlbaranesBD.Connection;
+            sqlCommand.CommandType = CommandType.Text;
+
+            sqlCommand.CommandText = "SELECT MAX(numero) as numero FROM albaranes";
+            sqlDataReader = sqlCommand.ExecuteReader();
+            dataTable.Load(sqlDataReader);
+            DataRow[] rows = dataTable.Select();
+            NumParam = (Convert.ToInt32(rows[0]["numero"].ToString())) + 1;
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            int n = dataGridViewlineas.Rows.Add();
+            
+            int NumAlbaran = Convert.ToInt32(txtId.Text);
+            cargarIdAlbaran(ref NumAlbaran);
+            string IdProducto =(txtCodigo.Text);
+            cargarIdProducto(ref IdProducto);
+           
 
 
+            dataGridViewlineas.Rows[n].Cells[0].Value = NumAlbaran;
+            dataGridViewlineas.Rows[n].Cells[1].Value = txtCantidad.Text;
+            dataGridViewlineas.Rows[n].Cells[2].Value = IdProducto;
+            dataGridViewlineas.Rows[n].Cells[3].Value = txtPrecio.Text.Replace(".",",");
+            dataGridViewlineas.Rows[n].Cells[6].Value = txtTotal.Text.Replace(".",".");
+            txtCodigo.Text = "";
+            txtProducto.Text = "";
+            txtCantidad.Text = "";
+            txtTotal.Text = "";
+
+            
+
+        
+            
+        }
+
+        private void btnTerminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlCommand guardar = new SqlCommand("INSERT INTO albaraneslineas (albaran_id,cantidad,producto_id,precio,iva,re,importe) VALUES (@albaranid,@cantidad,@productoid,@precio,@iva,@re,@importe)", ConexionAlb);
+                ConexionAlb.Open();
+
+
+                foreach (DataGridViewRow row in dataGridViewlineas.Rows)
+                {
+                    guardar.Parameters.Clear();
+
+                    guardar.Parameters.AddWithValue("@albaranid", Convert.ToInt32(row.Cells["Albaran_id"].Value));
+                    guardar.Parameters.AddWithValue("@cantidad", Convert.ToInt32(row.Cells["Cantidad"].Value));
+                    guardar.Parameters.AddWithValue("@productoid", Convert.ToInt32(row.Cells["Producto_id"].Value));
+                    guardar.Parameters.AddWithValue("@precio", Convert.ToDouble(row.Cells["Precio"].Value));
+                    guardar.Parameters.AddWithValue("@iva", 0);
+                    guardar.Parameters.AddWithValue("@re", 0);
+                    guardar.Parameters.AddWithValue("@importe", Convert.ToDouble(row.Cells["Importe"].Value));
+                    guardar.ExecuteNonQuery();
+
+                }
+            }
+            finally
+            {
+                this.Controls.Clear();
+                this.InitializeComponent();
+                ConexionAlb.Close();
+                DateTime fecha = DateTime.Today;
+                txtFecha.Text = fecha.ToString("d");
+            }
+            
+            
+
+
+
+        }
+        static void cargarIdAlbaran(ref int NumParam)
+        {
+            
+                CAlbaranesBD cAlbaranesBD = new CAlbaranesBD();
+                SqlCommand sqlCommand = new SqlCommand();
+                SqlDataReader sqlDataReader;
+                DataTable dataTable = new DataTable();
+                cAlbaranesBD.Abrir();
+                sqlCommand.Connection = cAlbaranesBD.Connection;
+                sqlCommand.CommandType = CommandType.Text;
+
+                sqlCommand.CommandText = "SELECT albaran_id FROM albaranes WHERE numero =" + NumParam;
+                sqlDataReader = sqlCommand.ExecuteReader();
+                dataTable.Load(sqlDataReader);
+                DataRow[] rows = dataTable.Select();
+                NumParam = Convert.ToInt32(rows[0]["albaran_id"].ToString());
+            
+           
+         }
+        static void cargarIdProducto(ref string NumParam)
+        {
+            CAlbaranesBD cAlbaranesBD = new CAlbaranesBD();
+            SqlCommand sqlCommand = new SqlCommand();
+            SqlDataReader sqlDataReader;
+            DataTable dataTable = new DataTable();
+            cAlbaranesBD.Abrir();
+            sqlCommand.Connection = cAlbaranesBD.Connection;
+            sqlCommand.CommandType = CommandType.Text;
+
+            sqlCommand.CommandText = "SELECT producto_id FROM productos WHERE codigo =" + NumParam;
+            sqlDataReader = sqlCommand.ExecuteReader();
+            dataTable.Load(sqlDataReader);
+            DataRow[] rows = dataTable.Select();
+            NumParam = rows[0]["producto_id"].ToString();
+
+
+        }
+
+       
     }
 
 
