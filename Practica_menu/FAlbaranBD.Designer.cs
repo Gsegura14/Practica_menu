@@ -45,6 +45,7 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.lblIdAlb = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSubtotal = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
@@ -65,6 +66,11 @@
             this.re = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnTerminar = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.pnDatos.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -205,7 +211,6 @@
             this.txtFecha.Name = "txtFecha";
             this.txtFecha.Size = new System.Drawing.Size(100, 20);
             this.txtFecha.TabIndex = 2;
-          
             // 
             // txtId
             // 
@@ -227,6 +232,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtSubtotal);
             this.panel1.Controls.Add(this.btnAgregar);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtTotal);
@@ -243,6 +249,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(987, 370);
             this.panel1.TabIndex = 1;
+            // 
+            // txtSubtotal
+            // 
+            this.txtSubtotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSubtotal.BackColor = System.Drawing.SystemColors.MenuText;
+            this.txtSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSubtotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.txtSubtotal.Location = new System.Drawing.Point(758, 15);
+            this.txtSubtotal.Multiline = true;
+            this.txtSubtotal.Name = "txtSubtotal";
+            this.txtSubtotal.ReadOnly = true;
+            this.txtSubtotal.Size = new System.Drawing.Size(220, 250);
+            this.txtSubtotal.TabIndex = 12;
+            this.txtSubtotal.TabStop = false;
+            this.txtSubtotal.Text = "0.0";
+            this.txtSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnAgregar
             // 
@@ -403,17 +425,74 @@
             this.btnTerminar.UseVisualStyleBackColor = true;
             this.btnTerminar.Click += new System.EventHandler(this.btnTerminar_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(12, 636);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(90, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Buscar Cliente F2";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(122, 636);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Buscar Producto F3";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(240, 636);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(96, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Imprimir Albaran F5";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(342, 636);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(73, 13);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Cancelar ESC";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(831, 613);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(146, 33);
+            this.btnCancelar.TabIndex = 14;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // FAlbaranBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(989, 658);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnTerminar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnDatos);
+            this.KeyPreview = true;
             this.Name = "FAlbaranBD";
             this.Text = "FAlbaranBD";
             this.Load += new System.EventHandler(this.FAlbaranBD_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FAlbaranBD_KeyUp);
             this.pnDatos.ResumeLayout(false);
             this.pnDatos.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -422,6 +501,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewlineas)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -464,5 +544,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn re;
         private System.Windows.Forms.DataGridViewTextBoxColumn importe;
         private System.Windows.Forms.Button btnTerminar;
+        private System.Windows.Forms.TextBox txtSubtotal;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

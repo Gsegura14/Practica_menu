@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,11 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="buscaClientes.cs" />
     <Compile Include="CAlbaranesBD.cs" />
     <Compile Include="CConexionAlbaranes.cs" />
     <Compile Include="CConexionBD.cs" />
     <Compile Include="CClientesBD.cs" />
     <Compile Include="CivasBD.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="CProductosBD.cs" />
     <Compile Include="CProvinciasBD.cs" />
     <Compile Include="FAlbaranBD.cs">
@@ -174,6 +179,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
